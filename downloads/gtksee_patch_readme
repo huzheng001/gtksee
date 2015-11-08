@@ -1,0 +1,34 @@
+gtksee的双击补丁
+
+我前天编完了yq0.50,昨天看了一天小说，今天上午有空，就编了gtksee的双击补丁.
+大家用过gtksee的话，就知道察看图片时双击并不能进入察看窗口，而是要按回车，并不方
+便。正好我在自己编的yq中解决了这个问题，与gtksee的作者lly联系后，我就编了这个.
+代码并不复杂，原理来自gtk faq.
+首先装上redhat7.1的第三张碟上的gtksee的源码包。
+进入/usr/src/redhat/SOURCES/
+有个gtksee-0.5.0.tar.gz
+拷出来,
+tar -xzvf gtksee-0.5.0.tar.gz
+把gtksee_doubleselect_patch拷到同一目录,这个可到我的网站去下载.
+patch -p0 < gtksee_doubleselect_patch
+搞定了.
+cd gtksee-0.5.0
+./configure
+make
+make install
+
+gtksee这一年来都没出新版本了.这个patch可能会在gtksee-0.5.1中应用.能为gtksee出
+点力真是荣幸.
+
+再谈一下这个patch的制作.
+先拷来原来的.
+再把改好的拷到当前目录的tmp下
+diff -u -r gtksee-0.5.0 tmp/gtksee-0.5.0 > gtksee_doubleselect_patch
+就得到了这个patch
+
+有问题请与我联系
+huzheng@21cn.com
+http://forlinux.yeah.net
+
+胡正
+2001.8.31
